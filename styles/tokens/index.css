@@ -1,0 +1,7 @@
+/**
+ * Design system token contract (semantic names).
+ * Themes in styles/themes/ provide the actual values.
+ * Variables: --color-primary, --color-secondary, --color-text, --color-text-muted,
+ * --color-success, --color-warning, --color-error, --color-info, --font-heading, --font-body,
+ * --text-h1-size through --text-h6-line, --text-body-*-size/line, --spacing-*, --radius-*, --shadow-*.
+ */
