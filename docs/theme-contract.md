@@ -4,6 +4,8 @@ A **theme** is a CSS file that defines the following semantic custom properties.
 
 ## Colors
 
+Each color family has **5 shades** in the Novelty theme: `--color-{family}-1` (darkest) through `--color-{family}-5` (lightest). Semantic names below map to these shades; new themes should define the same semantic names.
+
 | Token | Description |
 |-------|-------------|
 | `--color-primary` | Primary brand color (e.g. buttons, links) |
