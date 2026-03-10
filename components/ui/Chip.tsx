@@ -86,7 +86,7 @@ export function Chip({
           className="inline-flex shrink-0 rounded p-0.5 hover:opacity-80"
           aria-label="Remove"
         >
-          <Icon name="x" size={14} />
+          <Icon name="x-lg" size={12} />
         </button>
       ) : null}
     </span>

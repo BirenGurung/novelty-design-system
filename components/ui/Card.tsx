@@ -249,8 +249,8 @@ function ContentCard({
       {hasAccent && accentBar}
       <div className="flex min-w-0 flex-1 flex-col">
         <div className={`flex items-center justify-between gap-2 border-b border-[var(--color-border)] ${paddingClass}`}>
-          {/* Left column: list = title, badge, subText; default = title, date, badge, metaText, statusBadge */}
-          <div className="flex min-w-0 flex-1 flex-col gap-1">
+          {/* Left column: list = title, badge, subText; default = title, date, badge, metaText, statusBadge. items-start so badge fits content. */}
+          <div className="flex min-w-0 flex-1 flex-col gap-1 items-start">
             <Text variant={isCompact ? "body-md" : "body-lg"} as="span" className="font-medium text-[var(--color-text-darker)]">
               {title}
             </Text>

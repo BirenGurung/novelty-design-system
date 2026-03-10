@@ -304,13 +304,13 @@ export default function ComponentsPage() {
                 <Chip size={sz} variant="primary">Chip</Chip>
               </div>
               <div className="flex flex-wrap gap-2 items-center">
-                <Chip size={sz} variant="success" onDismiss={() => {}}>Chip X</Chip>
-                <Chip size={sz} variant="primary" onDismiss={() => {}}>Chip X</Chip>
+                <Chip size={sz} variant="success" onDismiss={() => {}}>Chip</Chip>
+                <Chip size={sz} variant="primary" onDismiss={() => {}}>Chip</Chip>
               </div>
               <div className="flex flex-wrap gap-2 items-center">
                 <Chip size={sz} variant="success" appearance="outline">Chip</Chip>
                 <Chip size={sz} variant="error" appearance="outline">Chip</Chip>
-                <Chip size={sz} variant="primary" appearance="outline" onDismiss={() => {}}>Chip X</Chip>
+                <Chip size={sz} variant="primary" appearance="outline" onDismiss={() => {}}>Chip</Chip>
               </div>
               <div className="flex flex-wrap gap-2 items-center">
                 <Chip size={sz} variant="success" appearance="soft">Chip</Chip>

@@ -26,8 +26,8 @@ export function Tooltip({ content, position = "top", children, className = "" }:
   const arrowClasses: Record<TooltipPosition, string> = {
     top: "left-1/2 -translate-x-1/2 top-full border-l-[6px] border-r-[6px] border-t-[6px] border-transparent border-t-[var(--color-text-darker)]",
     bottom: "left-1/2 -translate-x-1/2 bottom-full border-l-[6px] border-r-[6px] border-b-[6px] border-transparent border-b-[var(--color-text-darker)]",
-    left: "top-1/2 -translate-y-1/2 right-full border-t-[6px] border-b-[6px] border-l-[6px] border-transparent border-l-[var(--color-text-darker)]",
-    right: "top-1/2 -translate-y-1/2 left-full border-t-[6px] border-b-[6px] border-r-[6px] border-transparent border-r-[var(--color-text-darker)]",
+    left: "left-full top-1/2 h-3 w-0 -translate-y-1/2 border-t-[6px] border-b-[6px] border-l-[6px] border-transparent border-l-[var(--color-text-darker)]",
+    right: "right-full top-1/2 h-3 w-0 -translate-y-1/2 border-t-[6px] border-b-[6px] border-r-[6px] border-transparent border-r-[var(--color-text-darker)]",
   };
 
   return (

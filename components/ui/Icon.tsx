@@ -5,6 +5,7 @@ import {
   Gear,
   GearFill,
   X,
+  XLg,
   Search,
   CheckCircle,
   CheckCircleFill,
@@ -22,11 +23,12 @@ import {
   Image,
 } from "react-bootstrap-icons";
 
-/** Bootstrap icon names used across the app. Add to this map and IconName when using a new icon. Dismiss/close uses "x". */
+/** Bootstrap icon names used across the app. Add to this map and IconName when using a new icon. Dismiss: "x"; Figma chip uses "x-lg". */
 const iconMap = {
   gear: Gear,
   "gear-fill": GearFill,
   x: X,
+  "x-lg": XLg,
   search: Search,
   "check-circle": CheckCircle,
   "check-circle-fill": CheckCircleFill,
