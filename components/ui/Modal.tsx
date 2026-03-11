@@ -119,8 +119,9 @@ export function Modal({
         <div className={`flex-1 overflow-auto font-[family-name:var(--font-body)] text-[var(--color-text)] ${config.bodyPadding}`}>
           {children}
         </div>
-        <div className="flex justify-end gap-2 border-t border-[var(--color-border)] bg-[var(--color-table-header-fill)] px-2 py-2">
-          <Button variant="outline" size={size === "small" ? "small" : "medium"} onClick={onClose}>
+        {/* Figma Action Bar: Cancel left, primary right (justify-between); padding spacing-2 (8px). */}
+        <div className="flex items-center justify-between gap-4 border-t border-[var(--color-border)] bg-[var(--color-table-header-fill)] px-[var(--spacing-2)] py-[var(--spacing-2)]">
+          <Button variant="text" size={size === "small" ? "small" : "medium"} onClick={onClose}>
             {cancelLabel}
           </Button>
           {primaryActionLabel && onPrimaryAction ? (
