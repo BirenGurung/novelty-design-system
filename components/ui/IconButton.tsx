@@ -35,16 +35,15 @@ const iconSizeStyles: Record<IconButtonSize, string> = {
   large: "size-[28px]", /* 28px */
 };
 
-/** Figma: Inner shadow on pressed — same as Button. */
-const pressedInsetShadow = "active:shadow-[inset_0_3px_4px_0_rgba(0,0,0,0.25)]";
+const pressedShadowClass = "active:shadow-[var(--shadow-button-pressed)]";
 
 const variantStyles: Record<IconButtonVariant, string> = {
   filled:
-    "bg-[var(--color-surface)] text-[var(--color-primary)] shadow-[var(--shadow-sm)] hover:bg-[var(--color-primary-lighter)] active:bg-[var(--color-primary-muted)] disabled:bg-[var(--color-button-disabled,#9e9e9e)] disabled:text-[var(--color-white)] disabled:cursor-not-allowed",
+    "bg-[var(--color-surface)] text-[var(--color-primary)] shadow-[var(--shadow-sm)] hover:bg-[var(--color-primary-lighter)] active:bg-[var(--color-primary-muted)] disabled:bg-[var(--color-button-disabled)] disabled:text-[var(--color-white)] disabled:cursor-not-allowed",
   outline:
-    "bg-transparent border border-[var(--color-primary)] text-[var(--color-primary)] hover:bg-[var(--color-primary-lighter)] active:bg-[var(--color-primary-muted)] disabled:border-[var(--color-button-disabled,#9e9e9e)] disabled:text-[var(--color-button-disabled,#9e9e9e)] disabled:cursor-not-allowed",
+    "bg-transparent border border-[var(--color-primary)] text-[var(--color-primary)] hover:bg-[var(--color-primary-lighter)] active:bg-[var(--color-primary-muted)] disabled:border-[var(--color-button-disabled)] disabled:text-[var(--color-button-disabled)] disabled:cursor-not-allowed",
   clear:
-    "bg-transparent text-[var(--color-primary)] hover:bg-[var(--color-primary-lighter)] active:bg-[var(--color-primary-muted)] disabled:text-[var(--color-button-disabled,#9e9e9e)] disabled:cursor-not-allowed",
+    "bg-transparent text-[var(--color-primary)] hover:bg-[var(--color-primary-lighter)] active:bg-[var(--color-primary-muted)] disabled:text-[var(--color-button-disabled)] disabled:cursor-not-allowed",
 };
 
 /** Classes to force hover/pressed look for showcase (visualState prop). */
@@ -56,8 +55,8 @@ const visualStateOverrides: Record<IconButtonVisualState, Partial<Record<IconBut
     clear: "!bg-[var(--color-primary-lighter)]",
   },
   pressed: {
-    filled: "!bg-[var(--color-primary-muted)] !shadow-[inset_0_3px_4px_0_rgba(0,0,0,0.25)]",
-    outline: "!bg-[var(--color-primary-muted)] !shadow-[inset_0_3px_4px_0_rgba(0,0,0,0.25)]",
+    filled: "!bg-[var(--color-primary-muted)] !shadow-[var(--shadow-button-pressed)]",
+    outline: "!bg-[var(--color-primary-muted)] !shadow-[var(--shadow-button-pressed)]",
     clear: "!bg-[var(--color-primary-muted)]",
   },
 };
@@ -82,7 +81,7 @@ export function IconButton({
     <button
       type="button"
       disabled={disabled}
-      className={`inline-flex items-center justify-center shrink-0 transition-colors ${pressedInsetShadow} ${sizeStyles[size]} ${variantStyles[variant]} ${stateOverride} ${className}`}
+      className={`inline-flex items-center justify-center shrink-0 transition-colors ${pressedShadowClass} ${sizeStyles[size]} ${variantStyles[variant]} ${stateOverride} ${className}`}
       {...rest}
     >
       <span className={`inline-flex shrink-0 [&>svg]:size-full ${iconSizeStyles[size]}`} aria-hidden>

@@ -18,22 +18,24 @@ const filledStyles: Record<Exclude<ChipVariant, "outline">, string> = {
   warning: "bg-[var(--color-warning)] text-[var(--color-text-darker)]",
 };
 
+/* Outline: background = color system lighter (shade 5), border = main, text = main */
 const outlineStyles: Record<Exclude<ChipVariant, "outline">, string> = {
-  default: "bg-transparent border border-[var(--color-text-muted)] text-[var(--color-text-muted)]",
-  primary: "bg-transparent border border-[var(--color-primary)] text-[var(--color-primary)]",
-  success: "bg-transparent border border-[var(--color-success)] text-[var(--color-success)]",
-  error: "bg-transparent border border-[var(--color-error)] text-[var(--color-error)]",
-  info: "bg-transparent border border-[var(--color-info)] text-[var(--color-info)]",
-  warning: "bg-transparent border border-[var(--color-warning)] text-[var(--color-warning)]",
+  default: "bg-[var(--color-neutral-5)] border border-[var(--color-text-muted)] text-[var(--color-text-muted)]",
+  primary: "bg-[var(--color-primary-5)] border border-[var(--color-primary)] text-[var(--color-primary)]",
+  success: "bg-[var(--color-success-5)] border border-[var(--color-success)] text-[var(--color-success)]",
+  error: "bg-[var(--color-error-5)] border border-[var(--color-error)] text-[var(--color-error)]",
+  info: "bg-[var(--color-info-5)] border border-[var(--color-info)] text-[var(--color-info)]",
+  warning: "bg-[var(--color-warning-5)] border border-[var(--color-warning)] text-[var(--color-warning)]",
 };
 
+/* Soft: background = color system lighter (shade 5), text = semantic main */
 const softStyles: Record<Exclude<ChipVariant, "outline">, string> = {
-  default: "bg-[var(--color-primary-lighter)] text-[var(--color-text)]",
-  primary: "bg-[var(--color-primary-lighter)] text-[var(--color-primary)]",
-  success: "bg-[var(--color-success-lighter)] text-[var(--color-success)]",
-  error: "bg-[var(--color-error-lighter)] text-[var(--color-error)]",
-  info: "bg-[var(--color-info-lighter)] text-[var(--color-info)]",
-  warning: "bg-[var(--color-warning-lighter)] text-[var(--color-warning)]",
+  default: "bg-[var(--color-primary-5)] text-[var(--color-text)]",
+  primary: "bg-[var(--color-primary-5)] text-[var(--color-primary)]",
+  success: "bg-[var(--color-success-5)] text-[var(--color-success)]",
+  error: "bg-[var(--color-error-5)] text-[var(--color-error)]",
+  info: "bg-[var(--color-info-5)] text-[var(--color-info)]",
+  warning: "bg-[var(--color-warning-5)] text-[var(--color-warning)]",
 };
 
 /* Design: height from font size + line-height + vertical padding (no fixed height). Small/Medium: py spacing-1, Large: py spacing-2. */

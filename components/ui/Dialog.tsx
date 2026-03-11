@@ -2,6 +2,7 @@
 
 import type { ReactNode } from "react";
 import { useEffect, useRef } from "react";
+import { createPortal } from "react-dom";
 import { Button } from "./Button";
 import { Text } from "./Text";
 
@@ -79,17 +80,17 @@ export function Dialog({
 
   if (!open) return null;
 
-  return (
+  const overlay = (
     <div
       ref={overlayRef}
       role="alertdialog"
       aria-modal="true"
       aria-labelledby="dialog-title"
-      className={`fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 ${className}`}
+      className={`fixed inset-0 z-[100] flex items-center justify-center bg-black/50 p-4 ${className}`}
       onClick={handleOverlayClick}
     >
       <div
-        className="flex w-full max-w-[400px] flex-col rounded-[var(--radius-md)] border border-[var(--color-border)] bg-[var(--color-surface)] shadow-[var(--shadow-lg)]"
+        className="flex w-full max-w-[var(--size-modal-sm)] flex-col overflow-hidden rounded-[var(--radius-md)] border border-[var(--color-border)] bg-[var(--color-surface)] shadow-[var(--shadow-lg)]"
         onClick={(e) => e.stopPropagation()}
       >
         <div
@@ -127,4 +128,9 @@ export function Dialog({
       </div>
     </div>
   );
+
+  if (typeof document !== "undefined") {
+    return createPortal(overlay, document.body);
+  }
+  return overlay;
 }

@@ -108,6 +108,7 @@ export default function ColorsPage() {
                 key={token}
                 className="flex flex-col overflow-hidden rounded-lg border border-[var(--color-border)]"
               >
+                {/* Inline style only here: token name is dynamic; UI components use no inline styles. */}
                 <div
                   className="h-20 w-full shrink-0"
                   style={{ backgroundColor: `var(${token})` }}

@@ -23,13 +23,14 @@ const filledStyles: Record<BadgeColorVariant, string> = {
   warning: "bg-[var(--color-warning)] text-[var(--color-text-darker)]",
 };
 
+/* Outline: background = color system lighter (shade 5), border = main, text = main */
 const outlineStyles: Record<BadgeColorVariant, string> = {
-  default: "bg-transparent border border-[var(--color-text-muted)] text-[var(--color-text-muted)]",
-  primary: "bg-transparent border border-[var(--color-primary)] text-[var(--color-primary)]",
-  success: "bg-transparent border border-[var(--color-success)] text-[var(--color-success)]",
-  error: "bg-transparent border border-[var(--color-error)] text-[var(--color-error)]",
-  info: "bg-transparent border border-[var(--color-info)] text-[var(--color-info)]",
-  warning: "bg-transparent border border-[var(--color-warning)] text-[var(--color-warning)]",
+  default: "bg-[var(--color-neutral-5)] border border-[var(--color-text-muted)] text-[var(--color-text-muted)]",
+  primary: "bg-[var(--color-primary-5)] border border-[var(--color-primary)] text-[var(--color-primary)]",
+  success: "bg-[var(--color-success-5)] border border-[var(--color-success)] text-[var(--color-success)]",
+  error: "bg-[var(--color-error-5)] border border-[var(--color-error)] text-[var(--color-error)]",
+  info: "bg-[var(--color-info-5)] border border-[var(--color-info)] text-[var(--color-info)]",
+  warning: "bg-[var(--color-warning-5)] border border-[var(--color-warning)] text-[var(--color-warning)]",
 };
 
 export interface BadgeProps {

@@ -47,7 +47,7 @@ export function Table({
 }: TableProps) {
   const sizes = sizeStyles[size];
   const isFilled = style === "filled";
-  const headerBg = isFilled ? "bg-[var(--color-table-header-fill,#f8f9fa)]" : "bg-[var(--color-surface)]";
+  const headerBg = isFilled ? "bg-[var(--color-table-header-fill)]" : "bg-[var(--color-surface)]";
   const rowHover = isFilled ? "hover:bg-[var(--color-primary-lighter)]" : "";
 
   return (

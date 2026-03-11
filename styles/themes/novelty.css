@@ -92,6 +92,8 @@
   --color-info-lighter: var(--color-info-5);
 
   /* Typography: --font-heading and --font-body are set by the app (e.g. next/font) when using this theme */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
 
   /* Hero */
   --text-hero-size: 72px;
@@ -139,4 +141,16 @@
   --shadow-sm: 0 0 4px rgba(0, 0, 0, 0.16);
   --shadow-md: 0 4px 16px 4px rgba(0, 0, 0, 0.06);
   --shadow-lg: 0 4px 24px rgba(0, 0, 0, 0.12);
+  --shadow-button-pressed: inset 0 3px 4px 0 rgba(0, 0, 0, 0.25);
+
+  /* Component sizes (white-label: themes can override for layout) */
+  --size-tooltip-arrow: 6px;
+  --size-card-profile-width: 300px;
+  --size-card-user-width: 360px;
+  --size-card-content-width: 391px;
+  --size-media-card-image-height: 175px;
+  --size-modal-sm: 400px;
+  --size-modal-md: 600px;
+  --size-modal-lg: 800px;
+  --size-modal-xl: 1000px;
 }

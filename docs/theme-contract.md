@@ -61,6 +61,18 @@ All size/line values are typically in `px` or `rem`.
 | Token | Description |
 |-------|-------------|
 | `--shadow-sm`, `--shadow-md`, `--shadow-lg` | Box shadows |
+| `--shadow-button-pressed` | Inner shadow for button/icon-button pressed state (e.g. `inset 0 3px 4px 0 rgba(0,0,0,0.25)`) |
+
+## Component sizes (optional, for white-label layout)
+
+Themes can override these to change component dimensions without code changes:
+
+| Token | Description |
+|-------|-------------|
+| `--size-tooltip-arrow` | Tooltip arrow border width (e.g. 6px) |
+| `--size-card-profile-width`, `--size-card-user-width`, `--size-card-content-width` | Card max-widths (e.g. 300px, 360px, 391px) |
+| `--size-media-card-image-height` | Media card image block height (e.g. 175px) |
+| `--size-modal-sm`, `--size-modal-md`, `--size-modal-lg`, `--size-modal-xl` | Modal max-widths (e.g. 400px, 600px, 800px, 1000px) |
 
 ---
 

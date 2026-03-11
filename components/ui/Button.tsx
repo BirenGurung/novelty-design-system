@@ -31,17 +31,17 @@ const sizeStyles: Record<ButtonSize, string> = {
     "gap-2 px-4 py-3 rounded-[var(--radius-md)] text-[length:var(--text-body-lg-size)] leading-[var(--text-body-lg-line)]",
 };
 
-/** Figma: Inner shadow on pressed — Effect(INNER_SHADOW, #00000040, offset (0,3), radius 4, spread 0). */
-const pressedInsetShadow = "active:shadow-[inset_0_3px_4px_0_rgba(0,0,0,0.25)]";
+/** Pressed state uses theme token so themes can override. */
+const pressedShadowClass = "active:shadow-[var(--shadow-button-pressed)]";
 
 const variantStyles: Record<ButtonVariant, string> = {
   filled:
-    "bg-[var(--color-primary)] text-[var(--color-white)] font-medium hover:bg-[var(--color-primary-hover)] active:bg-[var(--color-primary-pressed)] disabled:bg-[var(--color-button-disabled,#9e9e9e)] disabled:text-[var(--color-white)] disabled:cursor-not-allowed",
+    "bg-[var(--color-primary)] text-[var(--color-white)] font-medium hover:bg-[var(--color-primary-hover)] active:bg-[var(--color-primary-pressed)] disabled:bg-[var(--color-button-disabled)] disabled:text-[var(--color-white)] disabled:cursor-not-allowed",
   outline:
-    "bg-transparent border border-[var(--color-primary)] text-[var(--color-primary)] font-medium hover:bg-[var(--color-primary-lighter)] active:bg-[var(--color-primary-muted)] disabled:border-[var(--color-button-disabled,#9e9e9e)] disabled:text-[var(--color-button-disabled,#9e9e9e)] disabled:cursor-not-allowed",
-  text: "bg-transparent text-[var(--color-primary)] font-medium hover:text-[var(--color-primary-hover)] active:text-[var(--color-primary-pressed)] disabled:text-[var(--color-button-disabled,#9e9e9e)] disabled:cursor-not-allowed",
+    "bg-transparent border border-[var(--color-primary)] text-[var(--color-primary)] font-medium hover:bg-[var(--color-primary-lighter)] active:bg-[var(--color-primary-muted)] disabled:border-[var(--color-button-disabled)] disabled:text-[var(--color-button-disabled)] disabled:cursor-not-allowed",
+  text: "bg-transparent text-[var(--color-primary)] font-medium hover:text-[var(--color-primary-hover)] active:text-[var(--color-primary-pressed)] disabled:text-[var(--color-button-disabled)] disabled:cursor-not-allowed",
   danger:
-    "bg-[var(--color-error)] text-[var(--color-white)] font-medium hover:bg-[var(--color-error-light)] active:bg-[var(--color-error)] disabled:bg-[var(--color-button-disabled,#9e9e9e)] disabled:text-[var(--color-white)] disabled:cursor-not-allowed",
+    "bg-[var(--color-error)] text-[var(--color-white)] font-medium hover:bg-[var(--color-error-light)] active:bg-[var(--color-error)] disabled:bg-[var(--color-button-disabled)] disabled:text-[var(--color-white)] disabled:cursor-not-allowed",
 };
 
 /** Classes to force hover/pressed look for showcase (visualState prop). */
@@ -54,10 +54,10 @@ const visualStateOverrides: Record<ButtonVisualState, Partial<Record<ButtonVaria
     danger: "!bg-[var(--color-error-light)]",
   },
   pressed: {
-    filled: "!bg-[var(--color-primary-pressed)] !shadow-[inset_0_3px_4px_0_rgba(0,0,0,0.25)]",
-    outline: "!bg-[var(--color-primary-muted)] !shadow-[inset_0_3px_4px_0_rgba(0,0,0,0.25)]",
-    text: "!text-[var(--color-primary-pressed)] !shadow-[inset_0_3px_4px_0_rgba(0,0,0,0.25)]",
-    danger: "!bg-[var(--color-error)] !shadow-[inset_0_3px_4px_0_rgba(0,0,0,0.25)]",
+    filled: "!bg-[var(--color-primary-pressed)] !shadow-[var(--shadow-button-pressed)]",
+    outline: "!bg-[var(--color-primary-muted)] !shadow-[var(--shadow-button-pressed)]",
+    text: "!text-[var(--color-primary-pressed)] !shadow-[var(--shadow-button-pressed)]",
+    danger: "!bg-[var(--color-error)] !shadow-[var(--shadow-button-pressed)]",
   },
 };
 
@@ -77,7 +77,7 @@ export function Button({
     <button
       type="button"
       disabled={disabled}
-      className={`inline-flex items-center justify-center font-[family-name:var(--font-body)] transition-colors ${pressedInsetShadow} ${sizeStyles[size]} ${variantStyles[variant]} ${stateOverride} ${className}`}
+      className={`inline-flex items-center justify-center font-[family-name:var(--font-body)] transition-colors ${pressedShadowClass} ${sizeStyles[size]} ${variantStyles[variant]} ${stateOverride} ${className}`}
       {...rest}
     >
       {leadingIcon ? <span className="inline-flex shrink-0">{leadingIcon}</span> : null}

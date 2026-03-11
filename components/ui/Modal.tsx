@@ -2,6 +2,7 @@
 
 import type { ReactNode } from "react";
 import { useEffect, useRef } from "react";
+import { createPortal } from "react-dom";
 import { Button } from "./Button";
 import { Icon } from "./Icon";
 import { Text } from "./Text";
@@ -26,25 +27,25 @@ export interface ModalProps {
 
 const sizeConfig: Record<ModalSize, { maxWidth: string; headerPadding: string; bodyPadding: string; titleVariant: "body-lg" | "h6" }> = {
   small: {
-    maxWidth: "max-w-[400px]",
+    maxWidth: "max-w-[var(--size-modal-sm)]",
     headerPadding: "px-2 py-2",
     bodyPadding: "p-2",
     titleVariant: "body-lg",
   },
   default: {
-    maxWidth: "max-w-[600px]",
+    maxWidth: "max-w-[var(--size-modal-md)]",
     headerPadding: "px-4 py-3",
     bodyPadding: "p-4",
     titleVariant: "h6",
   },
   large: {
-    maxWidth: "max-w-[800px]",
+    maxWidth: "max-w-[var(--size-modal-lg)]",
     headerPadding: "px-4 py-3",
     bodyPadding: "p-4",
     titleVariant: "h6",
   },
   xl: {
-    maxWidth: "max-w-[1000px]",
+    maxWidth: "max-w-[var(--size-modal-xl)]",
     headerPadding: "px-4 py-3",
     bodyPadding: "p-4",
     titleVariant: "h6",
@@ -84,17 +85,17 @@ export function Modal({
 
   if (!open) return null;
 
-  return (
+  const overlay = (
     <div
       ref={overlayRef}
       role="dialog"
       aria-modal="true"
       aria-labelledby="modal-title"
-      className={`fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 ${className}`}
+      className={`fixed inset-0 z-[100] flex items-center justify-center bg-black/50 p-4 ${className}`}
       onClick={handleOverlayClick}
     >
       <div
-        className={`flex max-h-[90vh] w-full flex-col rounded-[var(--radius-md)] border border-[var(--color-border)] bg-[var(--color-surface)] shadow-[var(--shadow-lg)] ${config.maxWidth}`}
+        className={`flex max-h-[90vh] w-full flex-col overflow-hidden rounded-[var(--radius-md)] border border-[var(--color-border)] bg-[var(--color-surface)] shadow-[var(--shadow-lg)] ${config.maxWidth}`}
         onClick={(e) => e.stopPropagation()}
       >
         <div className={`flex items-center justify-between border-b border-[var(--color-border)] ${config.headerPadding}`}>
@@ -131,4 +132,9 @@ export function Modal({
       </div>
     </div>
   );
+
+  if (typeof document !== "undefined") {
+    return createPortal(overlay, document.body);
+  }
+  return overlay;
 }

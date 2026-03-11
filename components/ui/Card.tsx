@@ -117,7 +117,7 @@ function ProfileCard({
 
   return (
     <div
-      className={`flex w-full max-w-[300px] flex-col overflow-hidden rounded-[var(--radius-md)] border border-[var(--color-border)] bg-[var(--color-surface)] ${className}`}
+      className={`flex w-full max-w-[var(--size-card-profile-width)] flex-col overflow-hidden rounded-[var(--radius-md)] border border-[var(--color-border)] bg-[var(--color-surface)] ${className}`}
     >
       <div className={`relative flex flex-col gap-1 p-4 ${headerBg}`}>
         <div className="flex flex-col items-center gap-1 pb-8">
@@ -177,7 +177,7 @@ function UserCard({
 
   return (
     <div
-      className={`flex w-full max-w-[360px] flex-col overflow-hidden rounded-[var(--radius-md)] border border-[var(--color-border)] bg-[var(--color-surface)] ${className}`}
+      className={`flex w-full max-w-[var(--size-card-user-width)] flex-col overflow-hidden rounded-[var(--radius-md)] border border-[var(--color-border)] bg-[var(--color-surface)] ${className}`}
     >
       <div className={`flex items-center justify-between gap-4 p-4 shadow-[var(--shadow-sm)] ${headerBg}`}>
         <div className="flex min-w-0 flex-1 items-center gap-3">
@@ -244,7 +244,7 @@ function ContentCard({
 
   return (
     <div
-      className={`flex w-full max-w-[391px] overflow-hidden rounded-[var(--radius-md)] border border-[var(--color-border)] bg-[var(--color-table-header-fill)] shadow-[var(--shadow-sm)] ${className}`}
+      className={`flex w-full max-w-[var(--size-card-content-width)] overflow-hidden rounded-[var(--radius-md)] border border-[var(--color-border)] bg-[var(--color-table-header-fill)] shadow-[var(--shadow-sm)] ${className}`}
     >
       {hasAccent && accentBar}
       <div className="flex min-w-0 flex-1 flex-col">
@@ -330,7 +330,7 @@ const mediaCardImageArea = (
   image: ReactNode,
   placeholder: ReactNode = <Icon name="image" size={48} className="text-[var(--color-text-muted)]" />
 ) => (
-  <div className="flex h-[175px] w-full items-center justify-center overflow-hidden bg-[var(--color-surface)] p-0">
+  <div className="flex h-[var(--size-media-card-image-height)] w-full items-center justify-center overflow-hidden bg-[var(--color-surface)] p-0">
     {image ?? placeholder}
   </div>
 );
@@ -376,7 +376,7 @@ function ContentWithImageCard({
 
   return (
     <div
-      className={`flex w-full max-w-[391px] overflow-hidden rounded-[var(--radius-md)] border border-[var(--color-border)] bg-[var(--color-table-header-fill)] shadow-[var(--shadow-sm)] ${className}`}
+      className={`flex w-full max-w-[var(--size-card-content-width)] overflow-hidden rounded-[var(--radius-md)] border border-[var(--color-border)] bg-[var(--color-table-header-fill)] shadow-[var(--shadow-sm)] ${className}`}
     >
       <div className="flex min-w-0 flex-1 flex-col">
         {isHeaderFirst ? (

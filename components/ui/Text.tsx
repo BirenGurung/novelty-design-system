@@ -15,60 +15,26 @@ type TextVariant =
   | "body-sm";
 type TextWeight = "regular" | "medium";
 
-const variantStyles: Record<
-  TextVariant,
-  { size: string; line: string; font: string }
-> = {
-  hero: {
-    size: "var(--text-hero-size)",
-    line: "var(--text-hero-line)",
-    font: "var(--font-heading)",
-  },
-  h1: {
-    size: "var(--text-h1-size)",
-    line: "var(--text-h1-line)",
-    font: "var(--font-heading)",
-  },
-  h2: {
-    size: "var(--text-h2-size)",
-    line: "var(--text-h2-line)",
-    font: "var(--font-heading)",
-  },
-  h3: {
-    size: "var(--text-h3-size)",
-    line: "var(--text-h3-line)",
-    font: "var(--font-heading)",
-  },
-  h4: {
-    size: "var(--text-h4-size)",
-    line: "var(--text-h4-line)",
-    font: "var(--font-heading)",
-  },
-  h5: {
-    size: "var(--text-h5-size)",
-    line: "var(--text-h5-line)",
-    font: "var(--font-heading)",
-  },
-  h6: {
-    size: "var(--text-h6-size)",
-    line: "var(--text-h6-line)",
-    font: "var(--font-heading)",
-  },
-  "body-lg": {
-    size: "var(--text-body-lg-size)",
-    line: "var(--text-body-lg-line)",
-    font: "var(--font-body)",
-  },
-  "body-md": {
-    size: "var(--text-body-md-size)",
-    line: "var(--text-body-md-line)",
-    font: "var(--font-body)",
-  },
-  "body-sm": {
-    size: "var(--text-body-sm-size)",
-    line: "var(--text-body-sm-line)",
-    font: "var(--font-body)",
-  },
+/** Token-based typography: font, size, line from theme; no inline styles. */
+const variantClasses: Record<TextVariant, string> = {
+  hero: "font-[family-name:var(--font-heading)] text-[length:var(--text-hero-size)] leading-[var(--text-hero-line)]",
+  h1: "font-[family-name:var(--font-heading)] text-[length:var(--text-h1-size)] leading-[var(--text-h1-line)]",
+  h2: "font-[family-name:var(--font-heading)] text-[length:var(--text-h2-size)] leading-[var(--text-h2-line)]",
+  h3: "font-[family-name:var(--font-heading)] text-[length:var(--text-h3-size)] leading-[var(--text-h3-line)]",
+  h4: "font-[family-name:var(--font-heading)] text-[length:var(--text-h4-size)] leading-[var(--text-h4-line)]",
+  h5: "font-[family-name:var(--font-heading)] text-[length:var(--text-h5-size)] leading-[var(--text-h5-line)]",
+  h6: "font-[family-name:var(--font-heading)] text-[length:var(--text-h6-size)] leading-[var(--text-h6-line)]",
+  "body-lg":
+    "font-[family-name:var(--font-body)] text-[length:var(--text-body-lg-size)] leading-[var(--text-body-lg-line)]",
+  "body-md":
+    "font-[family-name:var(--font-body)] text-[length:var(--text-body-md-size)] leading-[var(--text-body-md-line)]",
+  "body-sm":
+    "font-[family-name:var(--font-body)] text-[length:var(--text-body-sm-size)] leading-[var(--text-body-sm-line)]",
+};
+
+const weightClasses: Record<TextWeight, string> = {
+  regular: "font-[weight:var(--font-weight-regular)]",
+  medium: "font-[weight:var(--font-weight-medium)]",
 };
 
 export interface TextProps {
@@ -88,22 +54,11 @@ export function Text({
   className = "",
   id,
 }: TextProps) {
-  const style = variantStyles[variant];
-  const fontWeight =
-    weight === "medium" ? "var(--font-weight-medium)" : "var(--font-weight-regular)";
   const Tag = as ?? defaultTag(variant);
+  const typographyClass = `${variantClasses[variant]} ${weightClasses[weight]}`.trim();
 
   return (
-    <Tag
-      id={id}
-      className={className}
-      style={{
-        fontFamily: style.font,
-        fontSize: style.size,
-        lineHeight: style.line,
-        fontWeight,
-      }}
-    >
+    <Tag id={id} className={typographyClass ? `${typographyClass} ${className}`.trim() : className}>
       {children}
     </Tag>
   );
