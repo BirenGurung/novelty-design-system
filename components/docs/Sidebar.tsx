@@ -46,7 +46,7 @@ export function Sidebar() {
       className="w-56 shrink-0 border-r border-[var(--color-border)] bg-[var(--color-surface)]"
       aria-label="Documentation navigation"
     >
-      <nav className="sticky top-0 p-4 space-y-1 overflow-y-auto max-h-screen">
+      <nav className="sticky top-0 p-[var(--spacing-4)] space-y-1 overflow-y-auto max-h-screen">
         <Link
           href="/"
           className="block py-1"
@@ -72,7 +72,7 @@ export function Sidebar() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className={`block rounded-md px-3 py-2 text-sm transition-colors ${
+                    className={`block rounded-[var(--radius-md)] px-[var(--spacing-3)] py-[var(--spacing-2)] font-[family-name:var(--font-body)] text-[length:var(--text-body-md-size)] leading-[var(--text-body-md-line)] transition-colors ${
                       isActive
                         ? "bg-[var(--color-primary-lighter)] text-[var(--color-primary)] font-medium"
                         : "text-[var(--color-text-muted)] hover:bg-[var(--color-primary-lighter)] hover:text-[var(--color-text)]"
@@ -82,12 +82,12 @@ export function Sidebar() {
                   >
                     {item.label}
                   </Link>
-                  <ul className="ml-3 mt-1 space-y-0.5 border-l border-[var(--color-border)] pl-2">
+                  <ul className="ml-[var(--spacing-3)] mt-[var(--spacing-1)] space-y-0.5 border-l border-[var(--color-border)] pl-[var(--spacing-2)]">
                     {item.children.map((child) => (
                       <li key={child.href + child.label}>
                         <Link
                           href={child.href}
-                          className="block rounded py-1.5 px-2 text-xs text-[var(--color-text-muted)] hover:text-[var(--color-primary)] hover:bg-[var(--color-primary-lighter)]/50 transition-colors"
+                          className="block rounded-[var(--radius-sm)] py-[var(--spacing-2)] px-[var(--spacing-2)] font-[family-name:var(--font-body)] text-[length:var(--text-body-sm-size)] leading-[var(--text-body-sm-line)] text-[var(--color-text-muted)] hover:text-[var(--color-primary)] hover:bg-[var(--color-primary-lighter)]/50 transition-colors"
                         >
                           {child.label}
                         </Link>
@@ -102,7 +102,7 @@ export function Sidebar() {
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className={`block rounded-md px-3 py-2 text-sm transition-colors ${
+                  className={`block rounded-[var(--radius-md)] px-[var(--spacing-3)] py-[var(--spacing-2)] font-[family-name:var(--font-body)] text-[length:var(--text-body-md-size)] leading-[var(--text-body-md-line)] transition-colors ${
                     isActive
                       ? "bg-[var(--color-primary-lighter)] text-[var(--color-primary)] font-medium"
                       : "text-[var(--color-text-muted)] hover:bg-[var(--color-primary-lighter)] hover:text-[var(--color-text)]"

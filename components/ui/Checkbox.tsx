@@ -46,10 +46,10 @@ export function Checkbox({
         className={`flex shrink-0 items-center justify-center rounded-[var(--radius-sm)] border-2 border-[var(--color-border)] ${boxSize} transition-colors peer-checked:border-[var(--color-primary)] peer-checked:bg-[var(--color-primary)] peer-focus-visible:ring-2 peer-focus-visible:ring-[var(--color-primary)] peer-disabled:opacity-50 group-data-[indeterminate=true]:border-[var(--color-primary)] group-data-[indeterminate=true]:bg-[var(--color-primary)]`}
         aria-hidden
       >
-        <svg className="hidden size-3.5 text-white group-has-[:checked]:block group-data-[indeterminate=true]:!hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+        <svg className="hidden size-3.5 text-[var(--color-white)] group-has-[:checked]:block group-data-[indeterminate=true]:!hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
           <path d="M5 12l5 5L20 7" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
-        <svg className="hidden size-3.5 text-white group-data-[indeterminate=true]:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+        <svg className="hidden size-3.5 text-[var(--color-white)] group-data-[indeterminate=true]:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
           <path d="M5 12h14" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       </span>

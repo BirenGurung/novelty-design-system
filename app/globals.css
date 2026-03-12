@@ -6,8 +6,8 @@
 @import "../styles/themes/novelty.css";
 
 :root {
-  --background: var(--color-surface, #ffffff);
-  --foreground: var(--color-text, #171717);
+  --background: var(--color-surface);
+  --foreground: var(--color-text);
 }
 
 @theme inline {

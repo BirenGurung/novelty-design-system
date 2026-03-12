@@ -41,7 +41,7 @@ export function Select({
       ) : null}
       <select
         id={id}
-        className={`rounded-[var(--radius-sm)] border bg-[var(--color-surface)] px-3 py-2 font-[family-name:var(--font-body)] text-[length:var(--text-body-md-size)] leading-[var(--text-body-md-line)] text-[var(--color-text)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] ${
+        className={`rounded-[var(--radius-sm)] border bg-[var(--color-surface)] px-[var(--spacing-3)] py-[var(--spacing-2)] font-[family-name:var(--font-body)] text-[length:var(--text-body-md-size)] leading-[var(--text-body-md-line)] text-[var(--color-text)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] ${
           hasError ? "border-[var(--color-error)]" : "border-[var(--color-border)]"
         }`}
         aria-invalid={hasError}

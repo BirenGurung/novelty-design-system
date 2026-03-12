@@ -658,6 +658,27 @@ export default function ComponentsPage() {
             <AccordionItem value="1" title="Alt variant (multiple open)">First.</AccordionItem>
             <AccordionItem value="2" title="Alt variant">Second.</AccordionItem>
           </Accordion>
+          <Text variant="h6" as="h3" className="text-[var(--color-text-muted)] mt-6">Accordion — with caption and badges</Text>
+          <Accordion allowMultiple={false} variant="default">
+            <AccordionItem
+              value="d"
+              title="Payment plan"
+              caption="Some text"
+              badge={<Badge variant="success" appearance="outline" size="small" type="pill">Active</Badge>}
+            >
+              Accordion content for this item. Caption and badge appear in the header.
+            </AccordionItem>
+            <AccordionItem
+              value="e"
+              title="Account"
+              caption="Billing and profile"
+              titleBadge={<Badge variant="success" size="small" type="tag">On Payment Plan</Badge>}
+              badge={<Badge variant="success" appearance="outline" size="small" type="pill">Active</Badge>}
+              actions={<IconButton variant="outline" size="small" icon="three-dots-vertical" aria-label="More options" />}
+            >
+              Use titleBadge for a label next to the title; badge for a trailing status; actions for a menu trigger.
+            </AccordionItem>
+          </Accordion>
         </div>
       </Section>
 
