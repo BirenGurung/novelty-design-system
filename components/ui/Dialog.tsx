@@ -31,13 +31,13 @@ export interface DialogProps {
 
 const sizeConfig = {
   default: {
-    contentPadding: "p-4",
+    contentPadding: "p-[var(--spacing-3)]",
     titleVariant: "h6" as const,
     bodySize: "text-[length:var(--text-body-lg-size)] leading-[var(--text-body-lg-line)]",
     iconWrapper: "size-12",
   },
   compact: {
-    contentPadding: "p-4",
+    contentPadding: "p-[var(--spacing-3)]",
     titleVariant: "body-lg" as const,
     bodySize: "text-[length:var(--text-body-md-size)] leading-[var(--text-body-md-line)]",
     iconWrapper: "size-8",
@@ -86,7 +86,7 @@ export function Dialog({
       role="alertdialog"
       aria-modal="true"
       aria-labelledby="dialog-title"
-      className={`fixed inset-0 z-[100] flex items-center justify-center bg-black/50 p-4 ${className}`}
+      className={`fixed inset-0 z-[100] flex items-center justify-center bg-[var(--color-overlay)] p-[var(--spacing-3)] ${className}`}
       onClick={handleOverlayClick}
     >
       <div
@@ -94,7 +94,7 @@ export function Dialog({
         onClick={(e) => e.stopPropagation()}
       >
         <div
-          className={`flex flex-col ${config.contentPadding} ${isIconVariant ? "items-center gap-4 text-center" : "items-start gap-2"}`}
+          className={`flex flex-col ${config.contentPadding} ${isIconVariant ? "items-center gap-[var(--spacing-3)] text-center" : "items-start gap-[var(--spacing-2)]"}`}
         >
           {isIconVariant && icon ? (
             <div className={`flex shrink-0 items-center justify-center text-[var(--color-success)] ${config.iconWrapper}`}>
@@ -117,7 +117,7 @@ export function Dialog({
             </div>
           </div>
         </div>
-        <div className="flex justify-center gap-2 border-t border-[var(--color-border)] bg-[var(--color-table-header-fill)] px-2 py-2">
+        <div className="flex justify-center gap-[var(--spacing-2)] border-t border-[var(--color-border)] bg-[var(--color-table-header-fill)] px-[var(--spacing-2)] py-[var(--spacing-2)]">
           <Button variant="outline" size={size === "compact" ? "small" : "medium"} onClick={onClose}>
             {cancelLabel}
           </Button>

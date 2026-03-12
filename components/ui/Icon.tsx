@@ -21,6 +21,9 @@ import {
   PersonVcard,
   Wallet,
   Image,
+  House,
+  ChevronDown,
+  ChevronUp,
 } from "react-bootstrap-icons";
 
 /** Bootstrap icon names used across the app. Add to this map and IconName when using a new icon. Dismiss: "x"; Figma chip uses "x-lg". */
@@ -44,6 +47,9 @@ const iconMap = {
   "person-vcard": PersonVcard,
   wallet: Wallet,
   image: Image,
+  house: House,
+  "chevron-down": ChevronDown,
+  "chevron-up": ChevronUp,
 } as const;
 
 export type IconName = keyof typeof iconMap;

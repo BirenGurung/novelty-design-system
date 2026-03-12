@@ -1,4 +1,5 @@
 import { Text } from "@/components";
+import { RadiusValue } from "./radius-value";
 
 export const metadata = {
   title: "Tokens — Novelty Design System",
@@ -56,8 +57,29 @@ export default function TokensPage() {
       <section className="space-y-6">
         <Text variant="h2" as="h2">Border radius</Text>
         <p className="text-[var(--color-text)] font-[var(--font-body)] text-[length:var(--text-body-md-size)] leading-[length:var(--text-body-md-line)]">
-          Radius tokens define roundness for buttons, inputs, cards, and overlays. Use consistently so the UI feels cohesive.
+          Radius tokens define roundness for buttons, inputs, cards, and overlays. Figma uses <span className="font-mono text-[var(--color-primary)]">--border-radius-1</span> (4px) and <span className="font-mono text-[var(--color-primary)]">--border-radius-2</span> (8px); the theme aliases these to <span className="font-mono text-[var(--color-primary)]">--radius-sm</span> and <span className="font-mono text-[var(--color-primary)]">--radius-md</span>.
         </p>
+        <div className="flex flex-wrap gap-8 items-end">
+          {[
+            { token: "--radius-sm", use: "Badges, small chips" },
+            { token: "--radius-md", use: "Buttons, inputs, cards" },
+            { token: "--radius-lg", use: "Modals, large panels" },
+            { token: "--radius-xl", use: "Large overlays, hero cards" },
+            { token: "--radius-full", use: "Pills, avatars" },
+          ].map(({ token, use }) => (
+            <div key={token} className="flex flex-col gap-2 items-center">
+              <div
+                className="h-16 w-16 bg-[var(--color-primary-lighter)] border border-[var(--color-border)]"
+                style={{ borderRadius: `var(${token})` }}
+              />
+              <span className="font-mono text-sm text-[var(--color-primary)]">{token}</span>
+              <span className="text-xs text-[var(--color-text-muted)]">
+                <RadiusValue token={token} />
+              </span>
+              <span className="text-xs text-[var(--color-text)] text-center max-w-[100px]">{use}</span>
+            </div>
+          ))}
+        </div>
         <div className="overflow-x-auto rounded-lg border border-[var(--color-border)]">
           <table className="w-full text-left text-sm">
             <thead>
@@ -69,14 +91,17 @@ export default function TokensPage() {
             </thead>
             <tbody className="divide-y divide-[var(--color-border)]">
               {[
-                ["--radius-sm", "4px", "Badges, small chips"],
-                ["--radius-md", "8px", "Buttons, inputs, cards"],
-                ["--radius-lg", "12px", "Modals, large panels"],
-                ["--radius-full", "9999px", "Pills, avatars"],
-              ].map(([token, value, use]) => (
+                ["--radius-sm", "Badges, small chips"],
+                ["--radius-md", "Buttons, inputs, cards"],
+                ["--radius-lg", "Modals, large panels"],
+                ["--radius-xl", "Large overlays, hero cards"],
+                ["--radius-full", "Pills, avatars"],
+              ].map(([token, use]) => (
                 <tr key={token}>
                   <td className="px-4 py-3 font-mono text-[var(--color-primary)]">{token}</td>
-                  <td className="px-4 py-3 text-[var(--color-text-muted)]">{value}</td>
+                  <td className="px-4 py-3">
+                    <RadiusValue token={token} />
+                  </td>
                   <td className="px-4 py-3 text-[var(--color-text)]">{use}</td>
                 </tr>
               ))}

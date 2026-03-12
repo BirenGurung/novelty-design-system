@@ -1,5 +1,6 @@
 "use client";
 
+import React, { useState } from "react";
 import {
   Text,
   Button,
@@ -20,6 +21,14 @@ import {
   Modal,
   Dialog,
   Table,
+  Tabs,
+  TabList,
+  Tab,
+  TabPanel,
+  Accordion,
+  AccordionItem,
+  Drawer,
+  Popover,
 } from "@/components";
 import { ShowcaseClient } from "../showcase-client";
 
@@ -47,6 +56,50 @@ function Section({
   );
 }
 
+function DrawerDemo() {
+  const [openRight, setOpenRight] = useState(false);
+  const [openLeft, setOpenLeft] = useState(false);
+  const [openBottom, setOpenBottom] = useState(false);
+  return (
+    <div className="flex flex-wrap gap-2">
+      <Button variant="outline" size="small" onClick={() => setOpenRight(true)}>Open drawer (right)</Button>
+      <Button variant="outline" size="small" onClick={() => setOpenLeft(true)}>Open drawer (left)</Button>
+      <Button variant="outline" size="small" onClick={() => setOpenBottom(true)}>Open bottom sheet</Button>
+      <Drawer open={openRight} onClose={() => setOpenRight(false)} placement="right" title="Drawer">
+        <p className="m-0 text-[var(--color-text)]">Drawer content. Use for filters, settings, or secondary panels. Width from <code className="rounded bg-[var(--color-primary-lighter)] px-1 font-mono text-sm">--size-drawer-width</code>.</p>
+      </Drawer>
+      <Drawer open={openLeft} onClose={() => setOpenLeft(false)} placement="left" title="Panel">
+        <p className="m-0 text-[var(--color-text)]">Left drawer.</p>
+      </Drawer>
+      <Drawer open={openBottom} onClose={() => setOpenBottom(false)} placement="bottom" title="Bottom sheet">
+        <p className="m-0 text-[var(--color-text)]">Bottom sheet content. Height from <code className="rounded bg-[var(--color-primary-lighter)] px-1 font-mono text-sm">--size-bottom-sheet-height</code> (e.g. 70vh).</p>
+      </Drawer>
+    </div>
+  );
+}
+
+function TabsDemo() {
+  const [active, setActive] = useState("one");
+  return (
+    <Tabs value={active} onChange={setActive} style="border" size="large">
+      <TabList>
+        <Tab value="one">One</Tab>
+        <Tab value="two" icon="house">Two</Tab>
+        <Tab value="three">Three</Tab>
+      </TabList>
+      <TabPanel value="one">
+        <p className="text-[var(--color-text)] font-[family-name:var(--font-body)] text-[length:var(--text-body-md-size)]">Content for tab One.</p>
+      </TabPanel>
+      <TabPanel value="two">
+        <p className="text-[var(--color-text)] font-[family-name:var(--font-body)] text-[length:var(--text-body-md-size)]">Content for tab Two (with icon).</p>
+      </TabPanel>
+      <TabPanel value="three">
+        <p className="text-[var(--color-text)] font-[family-name:var(--font-body)] text-[length:var(--text-body-md-size)]">Content for tab Three.</p>
+      </TabPanel>
+    </Tabs>
+  );
+}
+
 export default function ComponentsPage() {
   return (
     <div className="mx-auto max-w-4xl space-y-16">
@@ -56,7 +109,7 @@ export default function ComponentsPage() {
           Reusable UI components built on design tokens. Each follows the theme contract so you can swap themes without changing code. Use the right component for the job and keep accessibility in mind (labels, aria, keyboard).
         </Text>
         <nav aria-label="On this page" className="flex flex-wrap gap-x-4 gap-y-1 text-sm">
-          {["buttons", "inputs", "feedback", "data-display", "overlays"].map((id) => (
+          {["buttons", "tabs", "inputs", "feedback", "data-display", "overlays"].map((id) => (
             <a key={id} href={`#${id}`} className="text-[var(--color-primary)] hover:underline capitalize">
               {id.replace("-", " ")}
             </a>
@@ -156,6 +209,39 @@ export default function ComponentsPage() {
               </div>
             </div>
           ))}
+        </div>
+      </Section>
+
+      <Section
+        id="tabs"
+        title="Tabs"
+        description="Tabs switch between views. Figma: Style=Border (underline), Filled (solid), Clear (text color active), Outline (border + fill). Sizes Large and Medium; optional icon."
+      >
+        <div className="space-y-8">
+          {[
+            { style: "border" as const, label: "Border (underline)" },
+            { style: "filled" as const, label: "Filled" },
+            { style: "clear" as const, label: "Clear" },
+            { style: "outline" as const, label: "Outline" },
+          ].map(({ style, label }) => (
+            <div key={style} className="space-y-3">
+              <Text variant="h6" as="h3" className="text-[var(--color-text-muted)]">{label}</Text>
+              <div className="flex flex-wrap gap-x-[var(--spacing-2)] gap-y-2 items-center">
+                <Tab style={style} size="large" selected={false}>Item</Tab>
+                <Tab style={style} size="large" selected={true}>Item</Tab>
+                <Tab style={style} size="large" icon="house" selected={false}>Item</Tab>
+                <Tab style={style} size="large" icon="house" selected={true}>Item</Tab>
+                <Tab style={style} size="medium" selected={false}>Item</Tab>
+                <Tab style={style} size="medium" selected={true}>Item</Tab>
+                <Tab style={style} size="medium" icon="house" selected={false}>Item</Tab>
+                <Tab style={style} size="medium" icon="house" selected={true}>Item</Tab>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="mt-8 space-y-4">
+          <Text variant="h6" as="h3" className="text-[var(--color-text-muted)]">Tabs with panels (controlled)</Text>
+          <TabsDemo />
         </div>
       </Section>
 
@@ -555,18 +641,51 @@ export default function ComponentsPage() {
             <Avatar size="medium" loading />
           </div>
         </div>
+        <div className="space-y-3 max-w-xl">
+          <Text variant="h6" as="h3" className="text-[var(--color-text-muted)]">Accordion — single or multiple, variant default / alt</Text>
+          <Accordion allowMultiple={false} variant="default">
+            <AccordionItem value="a" title="Section one">
+              Content for the first section. Use for FAQs or collapsible blocks.
+            </AccordionItem>
+            <AccordionItem value="b" title="Section two">
+              Second panel content. Set allowMultiple to open more than one at a time.
+            </AccordionItem>
+            <AccordionItem value="c" title="Section three">
+              Third section.
+            </AccordionItem>
+          </Accordion>
+          <Accordion allowMultiple variant="alt">
+            <AccordionItem value="1" title="Alt variant (multiple open)">First.</AccordionItem>
+            <AccordionItem value="2" title="Alt variant">Second.</AccordionItem>
+          </Accordion>
+        </div>
       </Section>
 
       <Section
         id="overlays"
         title="Overlays"
-        description="Modals and dialogs interrupt the flow for confirmation or short messages; use modals for primary flows (e.g. confirm discard) and dialogs for simple acknowledgments. Tooltips provide short contextual hints on hover or focus; keep content brief."
+        description="Modals and dialogs interrupt the flow for confirmation or short messages; use modals for primary flows (e.g. confirm discard) and dialogs for simple acknowledgments. Tooltips provide short contextual hints on hover or focus. Drawers slide in from the side; popovers show floating content on click."
       >
         <div className="flex flex-wrap gap-4">
           <Tooltip content="Tooltip text" position="top"><Button variant="outline" size="small">Hover top</Button></Tooltip>
           <Tooltip content="Tooltip text" position="bottom"><Button variant="outline" size="small">Hover bottom</Button></Tooltip>
           <Tooltip content="Tooltip text" position="left"><Button variant="outline" size="small">Hover left</Button></Tooltip>
           <Tooltip content="Tooltip text" position="right"><Button variant="outline" size="small">Hover right</Button></Tooltip>
+        </div>
+        <div className="space-y-3">
+          <Text variant="h6" as="h3" className="text-[var(--color-text-muted)]">Drawer — slides from left or right</Text>
+          <DrawerDemo />
+        </div>
+        <div className="space-y-3">
+          <Text variant="h6" as="h3" className="text-[var(--color-text-muted)]">Popover — click to open</Text>
+          <div className="flex flex-wrap gap-2">
+            <Popover content={<p className="m-0">Popover content. Use for menus, picks, or extra info.</p>} placement="bottom">
+              <Button variant="outline" size="small">Open popover (bottom)</Button>
+            </Popover>
+            <Popover content={<p className="m-0">Right-aligned popover.</p>} placement="right">
+              <Button variant="outline" size="small">Open popover (right)</Button>
+            </Popover>
+          </div>
         </div>
         <ShowcaseClient />
       </Section>

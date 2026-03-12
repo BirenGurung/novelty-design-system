@@ -28,26 +28,26 @@ export interface ModalProps {
 const sizeConfig: Record<ModalSize, { maxWidth: string; headerPadding: string; bodyPadding: string; titleVariant: "body-lg" | "h6" }> = {
   small: {
     maxWidth: "max-w-[var(--size-modal-sm)]",
-    headerPadding: "px-2 py-2",
-    bodyPadding: "p-2",
+    headerPadding: "px-[var(--spacing-2)] py-[var(--spacing-2)]",
+    bodyPadding: "p-[var(--spacing-2)]",
     titleVariant: "body-lg",
   },
   default: {
     maxWidth: "max-w-[var(--size-modal-md)]",
-    headerPadding: "px-4 py-3",
-    bodyPadding: "p-4",
+    headerPadding: "px-[var(--spacing-3)] py-[var(--spacing-2)]",
+    bodyPadding: "p-[var(--spacing-3)]",
     titleVariant: "h6",
   },
   large: {
     maxWidth: "max-w-[var(--size-modal-lg)]",
-    headerPadding: "px-4 py-3",
-    bodyPadding: "p-4",
+    headerPadding: "px-[var(--spacing-3)] py-[var(--spacing-2)]",
+    bodyPadding: "p-[var(--spacing-3)]",
     titleVariant: "h6",
   },
   xl: {
     maxWidth: "max-w-[var(--size-modal-xl)]",
-    headerPadding: "px-4 py-3",
-    bodyPadding: "p-4",
+    headerPadding: "px-[var(--spacing-3)] py-[var(--spacing-2)]",
+    bodyPadding: "p-[var(--spacing-3)]",
     titleVariant: "h6",
   },
 };
@@ -91,7 +91,7 @@ export function Modal({
       role="dialog"
       aria-modal="true"
       aria-labelledby="modal-title"
-      className={`fixed inset-0 z-[100] flex items-center justify-center bg-black/50 p-4 ${className}`}
+      className={`fixed inset-0 z-[100] flex items-center justify-center bg-[var(--color-overlay)] p-[var(--spacing-3)] ${className}`}
       onClick={handleOverlayClick}
     >
       <div
@@ -110,7 +110,7 @@ export function Modal({
           <button
             type="button"
             onClick={onClose}
-            className="rounded p-2 text-[var(--color-text-muted)] hover:bg-[var(--color-primary-lighter)] hover:text-[var(--color-primary)]"
+            className="rounded p-[var(--spacing-2)] text-[var(--color-text-muted)] hover:bg-[var(--color-primary-lighter)] hover:text-[var(--color-primary)]"
             aria-label="Close"
           >
             <Icon name="x" size={20} />

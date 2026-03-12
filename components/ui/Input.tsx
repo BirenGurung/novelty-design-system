@@ -1,5 +1,6 @@
 "use client";
 
+import { useId } from "react";
 import type { InputHTMLAttributes, ReactNode } from "react";
 
 export type InputStatus = "default" | "error" | "warning" | "success";
@@ -38,7 +39,8 @@ export function Input({
   disabled,
   ...inputProps
 }: InputProps) {
-  const id = idProp ?? `input-${Math.random().toString(36).slice(2, 9)}`;
+  const generatedId = useId();
+  const id = idProp ?? `input-${generatedId.replace(/:/g, "")}`;
   const resolvedStatus = error ? "error" : status;
   const hasError = resolvedStatus === "error";
   const isLarge = size === "large";
@@ -57,11 +59,11 @@ export function Input({
   const hoverBorder = disabled ? "" : "hover:border-[var(--color-text-muted)]";
   /* Height from line-height + vertical padding (no fixed min-height). Default = body-md, Large = body-lg. */
   const inputHeightStyles = isLarge
-    ? "py-2 leading-[var(--text-body-lg-line)] text-[length:var(--text-body-lg-size)]"
-    : "py-2 leading-[var(--text-body-md-line)] text-[length:var(--text-body-md-size)]";
+    ? "py-[var(--spacing-2)] leading-[var(--text-body-lg-line)] text-[length:var(--text-body-lg-size)]"
+    : "py-[var(--spacing-2)] leading-[var(--text-body-md-line)] text-[length:var(--text-body-md-size)]";
 
   return (
-    <div className={`flex flex-col gap-1 ${className}`}>
+    <div className={`flex flex-col gap-[var(--spacing-1)] ${className}`}>
       {label ? (
         <label
           htmlFor={id}
@@ -71,18 +73,18 @@ export function Input({
         </label>
       ) : null}
       <div
-        className={`flex items-center gap-2 rounded-[var(--radius-sm)] border ${wrapperBg} font-[family-name:var(--font-body)] transition-colors ${borderByStatus} ${hoverBorder} ${focusBorder} ${disabled ? "opacity-70" : ""}`}
+        className={`flex items-center gap-[var(--spacing-2)] rounded-[var(--radius-sm)] border ${wrapperBg} font-[family-name:var(--font-body)] transition-colors ${borderByStatus} ${hoverBorder} ${focusBorder} ${disabled ? "opacity-70" : ""}`}
       >
-        {leading ? <span className="pl-3 text-[var(--color-text-muted)]">{leading}</span> : null}
+        {leading ? <span className="pl-[var(--spacing-3)] text-[var(--color-text-muted)]">{leading}</span> : null}
         <input
           id={id}
           disabled={disabled}
-          className={`flex-1 bg-transparent px-3 text-[var(--color-text)] placeholder:text-[var(--color-text-muted)] focus:outline-none ${inputHeightStyles} ${leading ? "pl-0" : ""} ${trailing ? "pr-0" : ""} ${inputClassName}`}
+          className={`flex-1 bg-transparent px-[var(--spacing-3)] text-[var(--color-text)] placeholder:text-[var(--color-text-muted)] focus:outline-none ${inputHeightStyles} ${leading ? "pl-0" : ""} ${trailing ? "pr-0" : ""} ${inputClassName}`}
           aria-invalid={hasError}
           aria-describedby={hint ? `${id}-hint` : error ? `${id}-error` : undefined}
           {...inputProps}
         />
-        {trailing ? <span className="pr-3 text-[var(--color-text-muted)]">{trailing}</span> : null}
+        {trailing ? <span className="pr-[var(--spacing-3)] text-[var(--color-text-muted)]">{trailing}</span> : null}
       </div>
       {hint && !error ? (
         <p id={`${id}-hint`} className="text-[length:var(--text-body-sm-size)] text-[var(--color-text-muted)]">

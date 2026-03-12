@@ -19,20 +19,20 @@ export interface TableProps {
   className?: string;
 }
 
-/** Figma: Th padding spacing-2 (8px) default, spacing-1 (4px) compact; Td same. Large uses more padding. */
+/** Cell padding from spacing tokens: compact (spacing-1/2), default (spacing-2), large (spacing-3). */
 const sizeStyles = {
   compact: {
-    cell: "px-2 py-1",
+    cell: "px-[var(--spacing-2)] py-[var(--spacing-1)]",
     th: "text-[length:var(--text-body-sm-size)] leading-[var(--text-body-sm-line)]",
     td: "text-[length:var(--text-body-sm-size)] leading-[var(--text-body-sm-line)]",
   },
   default: {
-    cell: "px-2 py-2",
+    cell: "px-[var(--spacing-2)] py-[var(--spacing-2)]",
     th: "text-[length:var(--text-body-md-size)] leading-[var(--text-body-md-line)]",
     td: "text-[length:var(--text-body-md-size)] leading-[var(--text-body-md-line)]",
   },
   large: {
-    cell: "px-3 py-3",
+    cell: "px-[var(--spacing-3)] py-[var(--spacing-3)]",
     th: "text-[length:var(--text-body-lg-size)] leading-[var(--text-body-lg-line)]",
     td: "text-[length:var(--text-body-lg-size)] leading-[var(--text-body-lg-line)]",
   },

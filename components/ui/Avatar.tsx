@@ -2,31 +2,30 @@
 
 import type { ReactNode } from "react";
 
-/** Figma: Small 32px, Medium 44px, Large 64px, Extra Large 128px. */
+/** Figma: Small 32px, Medium 44px, Large 64px, Extra Large 128px. Sizes from theme tokens. */
 export type AvatarSize = "small" | "medium" | "large" | "extra-large";
 
-/** Figma sizes and initials typography: small=body-sm, medium=body-lg, large=h6, extra-large=h3. */
 const sizeConfig: Record<
   AvatarSize,
   { dimension: string; textSize: string; lineHeight: string }
 > = {
   small: {
-    dimension: "h-8 w-8 min-h-8 min-w-8",
+    dimension: "h-[var(--size-avatar-sm)] w-[var(--size-avatar-sm)] min-h-[var(--size-avatar-sm)] min-w-[var(--size-avatar-sm)]",
     textSize: "text-[length:var(--text-body-sm-size)]",
     lineHeight: "leading-[var(--text-body-sm-line)]",
   },
   medium: {
-    dimension: "h-11 w-11 min-h-11 min-w-11",
+    dimension: "h-[var(--size-avatar-md)] w-[var(--size-avatar-md)] min-h-[var(--size-avatar-md)] min-w-[var(--size-avatar-md)]",
     textSize: "text-[length:var(--text-body-lg-size)]",
     lineHeight: "leading-[var(--text-body-lg-line)]",
   },
   large: {
-    dimension: "h-16 w-16 min-h-16 min-w-16",
+    dimension: "h-[var(--size-avatar-lg)] w-[var(--size-avatar-lg)] min-h-[var(--size-avatar-lg)] min-w-[var(--size-avatar-lg)]",
     textSize: "text-[length:var(--text-h6-size)]",
     lineHeight: "leading-[var(--text-h6-line)]",
   },
   "extra-large": {
-    dimension: "h-32 w-32 min-h-32 min-w-32",
+    dimension: "h-[var(--size-avatar-xl)] w-[var(--size-avatar-xl)] min-h-[var(--size-avatar-xl)] min-w-[var(--size-avatar-xl)]",
     textSize: "text-[length:var(--text-h3-size)]",
     lineHeight: "leading-[var(--text-h3-line)]",
   },

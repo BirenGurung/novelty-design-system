@@ -22,17 +22,17 @@ export interface IconButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>
   className?: string;
 }
 
-/* Button: small 32px, medium 40px, large 60px. Icon: small 16px, medium 24px, large 28px. */
+/* Dimensions and icon size from theme tokens for white-label and consistency. */
 const sizeStyles: Record<IconButtonSize, string> = {
-  small: "h-8 w-8 min-h-8 min-w-8 rounded-full p-0 inline-flex items-center justify-center",
-  medium: "h-10 w-10 min-h-10 min-w-10 rounded-full p-0 inline-flex items-center justify-center",
-  large: "h-[60px] w-[60px] min-h-[60px] min-w-[60px] rounded-full p-0 inline-flex items-center justify-center",
+  small: "h-[var(--size-icon-button-sm)] w-[var(--size-icon-button-sm)] min-h-[var(--size-icon-button-sm)] min-w-[var(--size-icon-button-sm)] rounded-full p-0 inline-flex items-center justify-center",
+  medium: "h-[var(--size-icon-button-md)] w-[var(--size-icon-button-md)] min-h-[var(--size-icon-button-md)] min-w-[var(--size-icon-button-md)] rounded-full p-0 inline-flex items-center justify-center",
+  large: "h-[var(--size-icon-button-lg)] w-[var(--size-icon-button-lg)] min-h-[var(--size-icon-button-lg)] min-w-[var(--size-icon-button-lg)] rounded-full p-0 inline-flex items-center justify-center",
 };
 
 const iconSizeStyles: Record<IconButtonSize, string> = {
-  small: "size-4",     /* 16px */
-  medium: "size-6",    /* 24px */
-  large: "size-[28px]", /* 28px */
+  small: "size-4",
+  medium: "size-6",
+  large: "size-7",
 };
 
 const pressedShadowClass = "active:shadow-[var(--shadow-button-pressed)]";
